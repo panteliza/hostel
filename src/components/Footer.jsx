@@ -1,5 +1,9 @@
 import React from "react";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp, FaInstagram } from "react-icons/fa";
+import facebookImg from "../assets/facebook.png"; // Replace with actual image paths
+
+import whatsappImg from "../assets/whatsapp.png";
+import linkedinImg from "../assets/googlemap.png";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -15,17 +19,11 @@ const Footer = () => {
         <div>
           <div className="flex items-start gap-2 mb-4">
             <FaMapMarkerAlt size={18} className="mt-1" />
-            <div>
-              <p>E-11-A, Block E, East of Kailash, New Delhi - 110065</p>
-              <p className="text-sm">Landmark: Croma Store (1 min walk from Kailash Colony metro station)</p>
-            </div>
+            <p>E-11-A, Block E, East of Kailash, New Delhi - 110065</p>
           </div>
           <div className="flex items-start gap-2 mb-4">
             <FaPhoneAlt size={18} className="mt-1" />
-            <div>
-              <p>+91 98100 41641</p>
-              <p>+91 99101 00122</p>
-            </div>
+            <p>+91 98100 41641, +91 99101 00122</p>
           </div>
           <div className="flex items-start gap-2">
             <FaEnvelope size={18} className="mt-1" />
@@ -33,30 +31,47 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Column 3 */}
+        {/* Column 3 - Social Media Icons */}
         <div className="flex gap-4 justify-center md:justify-start">
+          {/* Facebook */}
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-500 transform hover:scale-110"
+          >
+            <img src={facebookImg} alt="Facebook" className="w-10 h-10 rounded-full" />
+          </a>
+
+      
+          {/* WhatsApp */}
           <a
             href="https://wa.me/9810041641"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition"
+            className="transition-transform duration-500 transform hover:scale-110"
           >
-            <FaWhatsapp size={24} />
+            <img src={whatsappImg} alt="WhatsApp" className="w-10 h-10 rounded-full" />
           </a>
+
+          {/* LinkedIn */}
           <a
-            href="https://instagram.com"
+            href="https://www.linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-pink-500 text-white p-3 rounded-full hover:bg-pink-600 transition"
+            className="transition-transform duration-500 transform hover:scale-110"
           >
-            <FaInstagram size={24} />
+            <img src={linkedinImg} alt="LinkedIn" className="w-10 h-10 rounded-full" />
           </a>
         </div>
       </div>
 
       {/* Footer Bottom */}
       <div className="text-center mt-6 text-sm text-gray-200">
-        © 2024 Lamba House. All rights reserved.
+        <span>
+          &copy; 2024 <span className="font-semibold">Muktinath Girls Hostel</span>. Developed & Designed by{" "}
+          <span className="font-semibold">Clouds Nepal Web Pvt. Ltd.</span>
+        </span>
       </div>
     </footer>
   );
