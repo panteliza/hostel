@@ -24,10 +24,10 @@ const Navbar = () => {
       <nav className="w-full bg-white shadow-md px-6 py-4 flex justify-between items-center">
         {/* Logo and Title Section */}
         <div className="flex items-center space-x-4">
-          <img src={logo} alt="Muktinath Girls Hostel Logo" className="h-[90px] w-[98px]" />
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">Muktinath Girls Hostel</h1>
-            <p className="text-sm text-gray-500">Best Girls Hostel in Kathmandu</p>
+          <img src={logo} alt="Muktinath Girls Hostel Logo" className="h-[70px] w-[80px] sm:h-[90px] sm:w-[98px]" />
+          <div className="hidden sm:block">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Muktinath Girls Hostel</h1>
+            <p className="text-xs sm:text-sm text-gray-500">Best Girls Hostel in Kathmandu</p>
           </div>
         </div>
 
@@ -58,14 +58,9 @@ const Navbar = () => {
         {/* Mobile Sidebar */}
         {showSidebar && (
           <div className="fixed top-0 left-0 w-[300px] h-full bg-white shadow-lg z-[2] flex flex-col">
+            {/* Only Logo in Mobile Sidebar */}
             <div className="flex justify-between items-center px-6 py-4">
-              <div className="flex items-center space-x-4">
-                <img src={logo} alt="Muktinath Girls Hostel Logo" className="h-[80px] w-[90px]" />
-                <div>
-                  <h1 className="text-lg font-bold text-gray-900">Muktinath Girls Hostel</h1>
-                  <p className="text-sm text-gray-500">Best Girls Hostel in Kathmandu</p>
-                </div>
-              </div>
+              <img src={logo} alt="Muktinath Girls Hostel Logo" className="h-[80px] w-[90px]" />
               <MdOutlineClose className="text-2xl cursor-pointer" onClick={toggleSidebar} />
             </div>
             <Link
