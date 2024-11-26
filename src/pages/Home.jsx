@@ -7,7 +7,7 @@ import Services from '../components/Services';
 import Reviews from '../components/Reviews';
 const Home = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center bg-[#FFFFFF] ">
+    <div className="w-full min-h-screen  ">
       <Navbar />
       <Dreamer/>
       <Facilities/>
