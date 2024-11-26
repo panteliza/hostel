@@ -4,7 +4,7 @@ import Facilities from './components/Facilities'
 
 const App = () => {
   return (
-    <div>
+    <div className=''>
       <Home/>
     
     </div>
