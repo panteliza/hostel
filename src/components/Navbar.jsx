@@ -23,13 +23,13 @@ const Navbar = () => {
     <>
       <nav className="w-full bg-white shadow-md px-6 py-4 flex justify-between items-center">
         {/* Logo and Title Section */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-4">
           <img src={logo} alt="Muktinath Girls Hostel Logo" className="h-[70px] w-[80px]" />
           <div>
             <h1 className="text-[12px] sm:text-2xl font-bold text-gray-900">
               Muktinath Girls Hostel
             </h1>
-            <p className="text-[8px] sm:text-sm text-gray-500">
+            <p className="text-[10px] sm:text-sm text-gray-500">
               Best Girls Hostel in Kathmandu
             </p>
           </div>
