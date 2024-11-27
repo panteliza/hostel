@@ -1,10 +1,40 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FaBed, FaBath, FaWifi, FaCouch, FaSnowflake, FaPlug, FaShoePrints, FaLock, FaChair } from "react-icons/fa";
-import { BiFridge, BiBuildingHouse } from "react-icons/bi";
+import { BiFridge } from "react-icons/bi";
 import { MdLocalLaundryService, MdFoodBank, MdCameraAlt, MdBalcony } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 
 const Facilities = () => {
+  const facilityRefs = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.5, // Trigger animation when 50% of the element is in view
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = "running";
+        } else {
+          entry.target.style.animationPlayState = "paused";
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    facilityRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      facilityRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
+
   const facilities = [
     {
       icon: <FaBed size={32} className="text-yellow-600" />,
@@ -81,11 +111,6 @@ const Facilities = () => {
       title: "Facility Manager",
       description: "Experienced in-house warden for supervision",
     },
-    {
-      icon: <BiBuildingHouse size={32} className="text-yellow-600" />,
-      title: "All Female Staff",
-      description: "Ample number of staff available for service",
-    },
   ];
 
   return (
@@ -98,7 +123,13 @@ const Facilities = () => {
         {facilities.map((facility, index) => (
           <div
             key={index}
+            ref={(el) => (facilityRefs.current[index] = el)}
             className="bg-yellow-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200"
+            style={{
+              animation: `${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"} 1s ease-out forwards`,
+              animationPlayState: "paused",
+              opacity: 0,
+            }}
           >
             <div className="mb-4">{facility.icon}</div>
             <h3 className="font-semibold text-lg text-yellow-700">{facility.title}</h3>
@@ -106,6 +137,18 @@ const Facilities = () => {
           </div>
         ))}
       </div>
+
+      {/* Inline CSS for animations */}
+      <style>{`
+        @keyframes fadeInLeft {
+          0% { opacity: 0; transform: translateX(-80px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+          0% { opacity: 0; transform: translateX(80px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+      `}</style>
     </section>
   );
 };
