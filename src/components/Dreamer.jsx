@@ -11,7 +11,7 @@ const ImageWithDescription = () => {
 
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.5, // Trigger animation when 50% of the element is visible
+      threshold: 0.3, // Trigger animation when 30% of the element is visible
     };
 
     const handleIntersection = (entries) => {
@@ -39,25 +39,25 @@ const ImageWithDescription = () => {
         {/* Slider Section */}
         <div className="mb-6">
           <Swiper
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }} // Faster slider timing
             loop={true}
             modules={[Autoplay]}
             slidesPerView={1}
-            spaceBetween={20}
+            spaceBetween={10}
             className="rounded-lg shadow-md"
           >
             <SwiperSlide>
               <img
                 src={dreamer1}
                 alt="Girl with book"
-                className="w-full h-auto rounded-lg"
+                className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-lg"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
                 src={dreamer2}
                 alt="Girl reading"
-                className="w-full h-auto rounded-lg"
+                className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-lg"
               />
             </SwiperSlide>
           </Swiper>
@@ -68,7 +68,7 @@ const ImageWithDescription = () => {
           ref={textRef}
           className="text-center md:text-left opacity-0"
           style={{
-            animation: "fadeInRight 1s ease-out forwards",
+            animation: "fadeInRight 0.8s ease-out forwards",
             animationPlayState: "paused",
           }}
         >
@@ -98,7 +98,7 @@ const ImageWithDescription = () => {
       {/* Inline CSS for custom animations */}
       <style>{`
         @keyframes fadeInRight {
-          0% { opacity: 0; transform: translateX(80px); }
+          0% { opacity: 0; transform: translateX(50px); }
           100% { opacity: 1; transform: translateX(0); }
         }
       `}</style>
