@@ -69,6 +69,7 @@ const Facilities = () => {
     { icon: <FaPlug size={32} className="text-yellow-600" />, title: "Power Backup", description: "24/7 power backup available." },
   ];
 
+  // Determine which facilities to display based on screen size and state
   const displayedFacilities = isMobile && !showAll ? facilities.slice(0, 6) : facilities;
 
   return (
