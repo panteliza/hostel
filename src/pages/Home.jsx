@@ -7,10 +7,12 @@ import Services from '../components/Services';
 import Reviews from '../components/Reviews';
 const Home = () => {
   return (
-    <div className="w-full min-h-screen  ">
+    <div className="w-full min-h-screen flex flex-col items-center  overflow-hidden">
       <Navbar />
       <Dreamer/>
-      <Facilities/>
+      <div className="w-full flex-shrink-0 mt-0">
+        <Facilities />
+      </div>
       <Services/>
       <Reviews/>
       <Footer/>
