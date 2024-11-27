@@ -37,31 +37,7 @@ const ImageWithDescription = () => {
     <section className="py-8">
       <div className="max-w-6xl mx-auto px-4 md:px-0">
         {/* Slider Section */}
-        <div className="mb-6">
-          <Swiper
-            autoplay={{ delay: 2500, disableOnInteraction: false }} // Faster slider timing
-            loop={true}
-            modules={[Autoplay]}
-            slidesPerView={1}
-            spaceBetween={10}
-            className="rounded-lg shadow-md"
-          >
-            <SwiperSlide>
-              <img
-                src={dreamer1}
-                alt="Girl with book"
-                className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-lg"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src={dreamer2}
-                alt="Girl reading"
-                className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-lg"
-              />
-            </SwiperSlide>
-          </Swiper>
-        </div>
+    
 
         {/* Description Section */}
         <div

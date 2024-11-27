@@ -5,10 +5,12 @@ import Footer from '../components/Footer';
 import Dreamer from '../components/Dreamer';
 
 import Reviews from '../components/Reviews';
+import Slider from '../components/Slider';
 const Home = () => {
   return (
     <div className="w-full min-h-screen flex flex-col items-center  overflow-hidden">
       <Navbar />
+      <Slider/>
       <Dreamer/>
       <div className="w-full flex-shrink-0 mt-0">
         <Facilities />
