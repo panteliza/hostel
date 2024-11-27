@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   FaBed,
   FaBath,
@@ -12,21 +12,7 @@ import { BiFridge } from "react-icons/bi";
 import { MdLocalLaundryService, MdFoodBank } from "react-icons/md";
 
 const Facilities = () => {
-  const [showAll, setShowAll] = useState(false); // Toggles "View More / View Less" on mobile screens
-  const [isMobile, setIsMobile] = useState(false); // Detects if the screen is mobile
   const facilityRefs = useRef([]);
-
-  useEffect(() => {
-    // Detect screen size to determine if the layout is mobile
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Mobile screens are <= 768px
-    };
-
-    handleResize(); // Check initial screen size
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     const observerOptions = {
@@ -69,9 +55,6 @@ const Facilities = () => {
     { icon: <FaPlug size={32} className="text-yellow-600" />, title: "Power Backup", description: "24/7 power backup available." },
   ];
 
-  // Determine which facilities to display based on screen size and state
-  const displayedFacilities = isMobile && !showAll ? facilities.slice(0, 6) : facilities;
-
   return (
     <section className="py-12 bg-gray-50">
       <div className="text-center mb-8">
@@ -79,16 +62,15 @@ const Facilities = () => {
         <p className="text-gray-600">Premium amenities for a comfortable stay</p>
       </div>
       <div className="grid gap-6 px-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-        {displayedFacilities.map((facility, index) => (
+        {facilities.map((facility, index) => (
           <div
             key={index}
             ref={(el) => (facilityRefs.current[index] = el)}
-            className={`bg-yellow-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200 ${
-              isMobile && showAll && index >= 6 ? "opacity-0" : "opacity-100"
-            }`}
+            className="bg-yellow-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200"
             style={{
               animation: `${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"} 1s ease-out forwards`,
               animationPlayState: "paused",
+              opacity: 0,
             }}
           >
             <div className="mb-4">{facility.icon}</div>
@@ -97,23 +79,6 @@ const Facilities = () => {
           </div>
         ))}
       </div>
-
-      {/* View More / View Less Button - Visible only on mobile */}
-      {isMobile && (
-        <div className="text-center mt-6">
-          <button
-            onClick={() => {
-              setShowAll((prev) => !prev);
-              facilityRefs.current.slice(6).forEach((ref) => {
-                if (ref) ref.style.animationPlayState = "running"; // Trigger animations for remaining divs
-              });
-            }}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
-          >
-            {showAll ? "View Less" : "View More"}
-          </button>
-        </div>
-      )}
 
       {/* Inline CSS for animations */}
       <style>{`
