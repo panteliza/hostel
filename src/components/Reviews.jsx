@@ -6,10 +6,10 @@ import { Autoplay } from "swiper/modules";
 import { AiFillStar } from "react-icons/ai";
 
 // Importing images from assets
-import image1 from "../assets/aawaz.jpeg"; // Replace with your actual file paths
-import image2 from "../assets/googlemap.png";
-import image3 from "../assets/whatsapp.png";
-import image4 from "../assets/aawaz.jpeg";
+import image1 from "../assets/beautiful-female-half-length-portrait-yellow-studio.jpg"; // Replace with your actual file paths
+import image2 from "../assets/front-view-cute-japanese-girl-tokyo.jpg";
+import image3 from "../assets/smiling-black-haired-vietnamese-girl-standing-bridge.jpg";
+import image4 from "../assets/preteen-girl-holding-hands-her-waist-while-smiling-t-shirt.jpg";
 
 const reviews = [
   {
