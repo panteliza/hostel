@@ -47,28 +47,28 @@ const Reviews = () => {
     <section className="bg-gray-50 py-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Title */}
-        <h2 className="text-3xl font-bold text-center text-blue-900 mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-blue-900 mb-4 sm:mb-6">
           What Our Guests Say
         </h2>
         <div className="w-16 h-1 bg-blue-600 mx-auto mb-6"></div>
 
         {/* Slider Section */}
         <Swiper
-          autoplay={{ delay: 3000, disableOnInteraction: false }} // Faster timing (3 seconds)
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           loop={true}
           modules={[Autoplay]}
           slidesPerView={1}
           spaceBetween={10}
           breakpoints={{
-            480: { slidesPerView: 1, spaceBetween: 20 },
-            640: { slidesPerView: 1, spaceBetween: 30 },
-            1024: { slidesPerView: 2, spaceBetween: 40 },
+            640: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
           }}
           className="rounded-lg shadow-lg"
         >
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md text-center flex flex-col items-center w-full max-w-sm mx-auto">
+              <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md flex flex-col items-center max-w-xs mx-auto">
                 {/* Profile Image */}
                 <img
                   src={review.image}
@@ -77,7 +77,7 @@ const Reviews = () => {
                 />
 
                 {/* Name */}
-                <h3 className="text-lg font-semibold text-gray-800 mb-2 break-words">
+                <h3 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 text-center break-words">
                   {review.name}
                 </h3>
 
@@ -98,7 +98,7 @@ const Reviews = () => {
                 </div>
 
                 {/* Review Text */}
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed break-words w-full hyphens-auto">
+                <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed text-center break-words">
                   "{review.review}"
                 </p>
               </div>
