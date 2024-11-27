@@ -1,6 +1,7 @@
 import React from "react";
 import HostelImage from "../assets/4.jpeg"; // Ensure this path is correct
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const About = () => {
   return (
@@ -48,6 +49,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
