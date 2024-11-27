@@ -1,15 +1,36 @@
-import React, { useEffect, useRef } from "react";
-import { FaBed, FaBath, FaWifi, FaCouch, FaSnowflake, FaPlug, FaShoePrints, FaLock, FaChair } from "react-icons/fa";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  FaBed,
+  FaBath,
+  FaWifi,
+  FaCouch,
+  FaSnowflake,
+  FaPlug,
+  FaChair,
+} from "react-icons/fa";
 import { BiFridge } from "react-icons/bi";
-import { MdLocalLaundryService, MdFoodBank, MdCameraAlt, MdBalcony } from "react-icons/md";
-import { AiOutlineUser } from "react-icons/ai";
+import { MdLocalLaundryService, MdFoodBank } from "react-icons/md";
 
 const Facilities = () => {
+  const [showAll, setShowAll] = useState(false); // Toggles "View More / View Less" on mobile screens
+  const [isMobile, setIsMobile] = useState(false); // Detects if the screen is mobile
   const facilityRefs = useRef([]);
 
   useEffect(() => {
+    // Detect screen size to determine if the layout is mobile
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Mobile screens are <= 768px
+    };
+
+    handleResize(); // Check initial screen size
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const observerOptions = {
-      threshold: 0.5, // Trigger animation when 50% of the element is in view
+      threshold: 0.5,
     };
 
     const handleIntersection = (entries) => {
@@ -36,82 +57,19 @@ const Facilities = () => {
   }, []);
 
   const facilities = [
-    {
-      icon: <FaBed size={32} className="text-yellow-600" />,
-      title: "Spacious well-lit Rooms",
-      description: "All rooms are spacious with lots of natural light",
-    },
-    {
-      icon: <FaBath size={32} className="text-yellow-600" />,
-      title: "Attached Bathrooms",
-      description: "All rooms have attached bathrooms with geysers & exhaust fans",
-    },
-    {
-      icon: <FaSnowflake size={32} className="text-yellow-600" />,
-      title: "Air-conditioner",
-      description: "Each room is equipped with a brand new split/window AC",
-    },
-    {
-      icon: <BiFridge size={32} className="text-yellow-600" />,
-      title: "Refrigerator",
-      description: "Each room has a sufficiently sized new refrigerator",
-    },
-    {
-      icon: <FaWifi size={32} className="text-yellow-600" />,
-      title: "Internet",
-      description: "Free & unlimited WiFi",
-    },
-    {
-      icon: <FaCouch size={32} className="text-yellow-600" />,
-      title: "Lobby Area",
-      description: "Each floor has a large & open communal lobby area with sitting",
-    },
-    {
-      icon: <MdFoodBank size={32} className="text-yellow-600" />,
-      title: "Food",
-      description: "Delicious home-cooked meals (breakfast, lunch & dinner)",
-    },
-    {
-      icon: <MdLocalLaundryService size={32} className="text-yellow-600" />,
-      title: "Laundry",
-      description: "In-house laundry & ironing services",
-    },
-    {
-      icon: <FaChair size={32} className="text-yellow-600" />,
-      title: "Study Table",
-      description: "Individual designated study table with a chair adjacent to the bed",
-    },
-    {
-      icon: <FaPlug size={32} className="text-yellow-600" />,
-      title: "Power Backup",
-      description: "100% power backup round the clock",
-    },
-    {
-      icon: <FaLock size={32} className="text-yellow-600" />,
-      title: "Storage",
-      description: "Individual box-bed with large cupboard with locks for storage",
-    },
-    {
-      icon: <FaShoePrints size={32} className="text-yellow-600" />,
-      title: "Shoe Cabinet",
-      description: "Each room has a large shoe cabinet in addition to the cupboard",
-    },
-    {
-      icon: <MdCameraAlt size={32} className="text-yellow-600" />,
-      title: "CCTV Surveillance",
-      description: "All common areas are under 24x7 CCTV surveillance",
-    },
-    {
-      icon: <MdBalcony size={32} className="text-yellow-600" />,
-      title: "Terrace & Balcony",
-      description: "Access to a large open terrace & front balcony",
-    },
-    {
-      icon: <AiOutlineUser size={32} className="text-yellow-600" />,
-      title: "Facility Manager",
-      description: "Experienced in-house warden for supervision",
-    },
+    { icon: <FaBed size={32} className="text-yellow-600" />, title: "Spacious Rooms", description: "Spacious and naturally well-lit rooms." },
+    { icon: <FaBath size={32} className="text-yellow-600" />, title: "Attached Bathrooms", description: "Rooms have attached bathrooms." },
+    { icon: <FaSnowflake size={32} className="text-yellow-600" />, title: "Air-conditioner", description: "Rooms equipped with air-conditioners." },
+    { icon: <BiFridge size={32} className="text-yellow-600" />, title: "Refrigerator", description: "Each room has a refrigerator." },
+    { icon: <FaWifi size={32} className="text-yellow-600" />, title: "Internet", description: "Free high-speed WiFi available." },
+    { icon: <FaCouch size={32} className="text-yellow-600" />, title: "Lobby Area", description: "Spacious communal lobby areas." },
+    { icon: <MdFoodBank size={32} className="text-yellow-600" />, title: "Food", description: "Nutritious meals provided daily." },
+    { icon: <MdLocalLaundryService size={32} className="text-yellow-600" />, title: "Laundry Service", description: "Laundry facilities available." },
+    { icon: <FaChair size={32} className="text-yellow-600" />, title: "Study Table", description: "Each room has a study table." },
+    { icon: <FaPlug size={32} className="text-yellow-600" />, title: "Power Backup", description: "24/7 power backup available." },
   ];
+
+  const displayedFacilities = isMobile && !showAll ? facilities.slice(0, 6) : facilities;
 
   return (
     <section className="py-12 bg-gray-50">
@@ -119,8 +77,8 @@ const Facilities = () => {
         <h2 className="text-3xl font-bold text-blue-900">Our Facilities</h2>
         <p className="text-gray-600">Premium amenities for a comfortable stay</p>
       </div>
-      <div className="grid gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-        {facilities.map((facility, index) => (
+      <div className="grid gap-6 px-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        {displayedFacilities.map((facility, index) => (
           <div
             key={index}
             ref={(el) => (facilityRefs.current[index] = el)}
@@ -137,6 +95,18 @@ const Facilities = () => {
           </div>
         ))}
       </div>
+
+      {/* View More / View Less Button - Visible only on mobile */}
+      {isMobile && (
+        <div className="text-center mt-6">
+          <button
+            onClick={() => setShowAll((prev) => !prev)}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
+          >
+            {showAll ? "View Less" : "View More"}
+          </button>
+        </div>
+      )}
 
       {/* Inline CSS for animations */}
       <style>{`
