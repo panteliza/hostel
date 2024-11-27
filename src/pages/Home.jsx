@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Facilities from '../components/Facilities';
 import Footer from '../components/Footer';
 import Dreamer from '../components/Dreamer';
-import Services from '../components/Services';
+
 import Reviews from '../components/Reviews';
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
       <div className="w-full flex-shrink-0 mt-0">
         <Facilities />
       </div>
-      <Services/>
+     
       <Reviews/>
       <Footer/>
     </div>
