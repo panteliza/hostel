@@ -49,12 +49,12 @@ const ImageWithDescription = () => {
   }}
 >
   {/* Heading with animation */}
-  <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-6 leading-tight">
+  <h2 className="text-[22px] sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-6 leading-tight">
     About Muktinath Girls Hostel
   </h2>
 
   {/* Paragraph with justified text */}
-  <p className="text-[12px] md:text-lg lg:text-xl leading-relaxed tracking-wide text-justify text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-red-600 to-purple-700">
+  <p className="text-[14px] md:text-lg lg:text-xl leading-relaxed tracking-wide text-justify text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-red-600 to-purple-700">
     Muktinath Girls Hostel, strategically located in the heart of Anamnagar,
     Kathmandu, offers more than just a place to stay—it provides a community
     where dreams are nurtured, and futures are built. Tailored to cater to the

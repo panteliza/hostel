@@ -47,10 +47,10 @@ const Reviews = () => {
     <section className="bg-gray-50 py-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Title */}
-        <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
+        <h2 className="text-3xl font-bold text-center text-blue-900 mb-6">
           What Our Guests Say
         </h2>
-        <div className="w-16 h-1 bg-red-600 mx-auto mb-6"></div>
+        <div className="w-16 h-1 bg-blue-600 mx-auto mb-6"></div>
 
         {/* Slider Section */}
         <Swiper
