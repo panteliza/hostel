@@ -83,11 +83,12 @@ const Facilities = () => {
           <div
             key={index}
             ref={(el) => (facilityRefs.current[index] = el)}
-            className="bg-yellow-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200"
+            className={`bg-yellow-100 rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200 ${
+              isMobile && showAll && index >= 6 ? "opacity-0" : "opacity-100"
+            }`}
             style={{
               animation: `${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"} 1s ease-out forwards`,
               animationPlayState: "paused",
-              opacity: 0,
             }}
           >
             <div className="mb-4">{facility.icon}</div>
@@ -101,7 +102,12 @@ const Facilities = () => {
       {isMobile && (
         <div className="text-center mt-6">
           <button
-            onClick={() => setShowAll((prev) => !prev)}
+            onClick={() => {
+              setShowAll((prev) => !prev);
+              facilityRefs.current.slice(6).forEach((ref) => {
+                if (ref) ref.style.animationPlayState = "running"; // Trigger animations for remaining divs
+              });
+            }}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
           >
             {showAll ? "View Less" : "View More"}
