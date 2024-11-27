@@ -7,46 +7,42 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#6c7ee7] text-white py-12 w-full ">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer className="bg-[#6c7ee7] text-white py-12 w-full flex flex-col items-center justify-center">
+      <div className="max-w-7xl w-full px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
         {/* Column 1 */}
-        <div className="flex flex-col items-start space-y-3">
+        <div className="flex flex-col items-center md:items-start space-y-2 md:space-y-3">
           {/* Muktinath Logo */}
           <img
             src={muktinathLogo}
             alt="Muktinath Logo"
-            className="w-[150px] h-[] mb-4"
+            className="w-[150px] h-auto mb-4"
           />
           <h2 className="text-2xl font-bold">Muktinath Girls Hostel</h2>
-          <p className="text-sm">
-            Premium girls' hostel in Kathmandu
-          </p>
+          <p className="text-sm">Premium girls' hostel in Kathmandu</p>
         </div>
 
         {/* Column 2 */}
-        <div className="space-y-4">
+        <div className="flex flex-col items-center md:items-start space-y-2 md:space-y-4">
           <div className="flex items-start gap-3">
             <FaMapMarkerAlt size={18} className="mt-1" />
             <p>
-              E-11-A, Block E, East of Kailash, New Delhi - 110065
+              Anamnagar, Kathmandu, Nepal
               <br />
-              <span className="text-sm">Landmark: Croma Store</span>
+              <span className="text-sm">Way to Liberty College</span>
             </p>
           </div>
           <div className="flex items-start gap-3">
             <FaPhoneAlt size={18} className="mt-1" />
-            <p>
-              +91 98100 41641, <br /> +91 99101 00122
-            </p>
+            <p>+977 9851102512</p>
           </div>
           <div className="flex items-start gap-3">
             <FaEnvelope size={18} className="mt-1" />
-            <p>lambahousedelhi@gmail.com</p>
+            <p>muktinathgirlshostel@gmail.com</p>
           </div>
         </div>
 
         {/* Column 3 - Social Media Icons */}
-        <div className="flex flex-col items-start space-y-6">
+        <div className="flex flex-col items-center md:items-start space-y-4">
           <h3 className="text-lg font-semibold">Follow Us</h3>
           <div className="flex gap-4">
             {/* Facebook */}
