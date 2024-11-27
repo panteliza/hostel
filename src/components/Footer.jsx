@@ -96,6 +96,44 @@ const Footer = () => {
           &copy; 2024 <span className="font-semibold">Muktinath Girls Hostel</span>. Developed & Designed by{" "}
           <span className="font-semibold">Clouds Nepal Web Pvt. Ltd.</span>
         </span>
+        
+      {/* Inline CSS for custom animations */}
+      <style>{`
+        @keyframes fadeIn {
+          0% { opacity: 0; transform: translateY(40px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+           .glitter-effect-text {
+    position: relative;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-image: linear-gradient(90deg, #e5e5e5, #f0f0f0, #e5e5e5);
+    background-size: 200% 100%;
+    animation: glitter 1.5s infinite linear;
+    -webkit-background-clip: text; /* Ensure gradient only applies to text */
+    background-clip: text;
+  }
+
+  /* Create the glittering animation */
+  @keyframes glitter {
+    0% {
+      background-position: 200% 0;
+    }
+    50% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Optional: Soft white glow for moon-like shine */
+  .glitter-effect-text {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+      `}</style>
       </div>
     </footer>
   );
