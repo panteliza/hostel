@@ -1,8 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import dreamer from "../assets/girl-with-book.jpg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Autoplay } from "swiper/modules";
+import dreamer1 from "../assets/girl-with-book.jpg"; // Replace with your image paths
+import dreamer2 from "../assets/girls.jpeg";  // Replace with your image paths
 
 const ImageWithDescription = () => {
-  const imageRef = useRef(null);
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -22,32 +26,41 @@ const ImageWithDescription = () => {
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-    if (imageRef.current) observer.observe(imageRef.current);
     if (textRef.current) observer.observe(textRef.current);
 
     return () => {
-      if (imageRef.current) observer.unobserve(imageRef.current);
       if (textRef.current) observer.unobserve(textRef.current);
     };
   }, []);
 
   return (
     <section className="py-8">
-      <div className="max-w-4xl mx-auto px-4 md:px-0">
-        {/* Image Section */}
-        <div
-          ref={imageRef}
-          className="mb-6 opacity-0"
-          style={{
-            animation: "fadeInLeft 1s ease-out forwards",
-            animationPlayState: "paused",
-          }}
-        >
-          <img
-            src={dreamer}
-            alt="Girl reading a book"
-            className="w-full h-auto rounded-lg shadow-md"
-          />
+      <div className="max-w-6xl mx-auto px-4 md:px-0">
+        {/* Slider Section */}
+        <div className="mb-6">
+          <Swiper
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            modules={[Autoplay]}
+            slidesPerView={1}
+            spaceBetween={20}
+            className="rounded-lg shadow-md"
+          >
+            <SwiperSlide>
+              <img
+                src={dreamer1}
+                alt="Girl with book"
+                className="w-full h-auto rounded-lg"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src={dreamer2}
+                alt="Girl reading"
+                className="w-full h-auto rounded-lg"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
 
         {/* Description Section */}
@@ -59,10 +72,10 @@ const ImageWithDescription = () => {
             animationPlayState: "paused",
           }}
         >
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-4 leading-tight">
             About Muktinath Girls Hostel
           </h2>
-          <p className="text-gray-700 text-lg leading-relaxed">
+          <p className="text-gray-700 text-base md:text-lg lg:text-xl leading-relaxed tracking-wide">
             Muktinath Girls Hostel, strategically located in the heart of
             Anamnagar, Kathmandu, offers more than just a place to stay—it
             provides a community where dreams are nurtured, and futures are
@@ -84,10 +97,6 @@ const ImageWithDescription = () => {
 
       {/* Inline CSS for custom animations */}
       <style>{`
-        @keyframes fadeInLeft {
-          0% { opacity: 0; transform: translateX(-80px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
         @keyframes fadeInRight {
           0% { opacity: 0; transform: translateX(80px); }
           100% { opacity: 1; transform: translateX(0); }
