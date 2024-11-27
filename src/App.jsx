@@ -23,7 +23,7 @@ const App = () => {
 
         {/* WhatsApp button as an image */}
         <a
-          href="https://wa.me/9779845192771"
+          href="https://wa.me/9779851102512"
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-button"
