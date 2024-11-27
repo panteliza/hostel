@@ -26,10 +26,10 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <img src={logo} alt="Muktinath Girls Hostel Logo" className="h-[70px] w-[80px]" />
           <div>
-            <h1 className="text-[12px] sm:text-2xl font-bold text-gray-900">
+            <h1 className="text-[12px] sm:text-2xl font-bold text-[#2D4591]">
               Muktinath Girls Hostel
             </h1>
-            <p className="text-[10px] sm:text-sm text-gray-500">
+            <p className="text-[10px] sm:text-sm text-[#DD363A]">
               Best Girls Hostel in Kathmandu
             </p>
           </div>
@@ -37,7 +37,7 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8 text-lg">
-          <Link to="/" className="text-[#099BA4] font-medium hover:text-[#038A58]">
+          <Link to="/" className="text-[#2D4591] font-medium hover:text-[#07A2BB]">
             Home
           </Link>
           {navLinks.map(({ path, label }) => (
