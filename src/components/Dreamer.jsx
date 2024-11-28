@@ -49,62 +49,73 @@ const ImageWithDescription = () => {
           </h2>
 
           {/* Paragraph with gradient color animation */}
-          <p className="text-[14px] md:text-lg lg:text-xl leading-relaxed tracking-wide text-justify text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-yellow-500 to-green-400 animate-gradientReveal opacity-0">
-            Muktinath Girls Hostel, strategically located in the heart of Anamnagar,
-            Kathmandu, offers more than just a place to stay—it provides a community
-            where dreams are nurtured, and futures are built. Tailored to cater to the
-            needs of independent thinkers, high-achievers, and visionary dreamers, our
-            hostel ensures a secure and empowering environment for young women.
-            <br />
-            <br />
-            With state-of-the-art facilities, a supportive management team, and a focus
-            on personal and academic growth, we go beyond conventional lodging.
-            Muktinath Girls Hostel creates a space where students thrive as leaders,
-            innovators, and pioneers in their respective fields. Join us in experiencing
-            a harmonious blend of comfort, inspiration, and achievement, designed to
-            elevate the journey of every resident.
-          </p>
-        </div>
-      </div>
+          <p className="text-[14px] md:text-lg lg:text-xl leading-relaxed tracking-wide text-justify text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-yellow-500 via-green-400 via-teal-600 via-purple-600 to-blue-400 animate-gradientReveal opacity-0">
+  Muktinath Girls Hostel, strategically located in the heart of Anamnagar,
+  Kathmandu, offers more than just a place to stay—it provides a community
+  where dreams are nurtured, and futures are built. Tailored to cater to the
+  needs of independent thinkers, high-achievers, and visionary dreamers, our
+  hostel ensures a secure and empowering environment for young women.
+  <br />
+  <br />
+  With state-of-the-art facilities, a supportive management team, and a focus
+  on personal and academic growth, we go beyond conventional lodging.
+  Muktinath Girls Hostel creates a space where students thrive as leaders,
+  innovators, and pioneers in their respective fields. Join us in experiencing
+  a harmonious blend of comfort, inspiration, and achievement, designed to
+  elevate the journey of every resident.
+</p>
+</div>
+</div>
 
-      {/* Inline CSS for custom animations */}
-      <style>{`
-        @keyframes fadeInRight {
-          0% { opacity: 0; transform: translateX(50px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
+{/* Inline CSS for custom animations */}
+<style>{`
+  @keyframes fadeInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
 
-        /* More dynamic gradient reveal animation */
-        @keyframes gradientReveal {
-          0% {
-            opacity: 0;
-            transform: translateY(20px) rotateX(90deg);
-            background-position: 0% 50%;
-          }
-          25% {
-            opacity: 0.3;
-            background-position: 100% 50%;
-          }
-          50% {
-            opacity: 0.5;
-            background-position: 200% 50%;
-          }
-          75% {
-            opacity: 0.7;
-            background-position: 300% 50%;
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) rotateX(0deg);
-            background-position: 400% 50%;
-          }
-        }
+  /* Smoother and slower gradient animation */
+  @keyframes gradientReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) rotateX(90deg);
+      background-position: 0% 50%;
+    }
+    25% {
+      opacity: 0.3;
+      background-position: 50% 50%;
+    }
+    50% {
+      opacity: 0.5;
+      background-position: 100% 50%;
+    }
+    75% {
+      opacity: 0.7;
+      background-position: 150% 50%;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg);
+      background-position: 200% 50%;
+    }
+  }
 
-        .animate-gradientReveal {
-          animation: gradientReveal 2s ease-in-out forwards;
-          background-size: 400% 400%; /* Increase size for faster and bigger transition */
-        }
-      `}</style>
+  .animate-gradientReveal {
+    animation: gradientReveal 4s ease-in-out forwards, colorShift 6s infinite alternate ease-in-out;
+    background-size: 400% 400%; /* Smooth color transition */
+  }
+
+  /* Additional subtle color shift */
+  @keyframes colorShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 400% 50%;
+    }
+  }
+`}</style>
+
     </section>
   );
 };
