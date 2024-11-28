@@ -45,7 +45,7 @@ const Contact = () => {
           ref={refs[0]}
           className="flex flex-col items-center p-6 bg-white shadow-lg rounded-lg transform opacity-0 transition-opacity duration-700"
           style={{
-            animation: 'fadeInLeft 1.2s ease-out forwards',
+            animation: 'fadeInLeftMobile 1.2s ease-out forwards',
             animationPlayState: 'paused',
           }}
         >
@@ -61,7 +61,7 @@ const Contact = () => {
           ref={refs[1]}
           className="flex flex-col items-center p-6 bg-white shadow-lg rounded-lg transform opacity-0 transition-opacity duration-700"
           style={{
-            animation: 'fadeInRight 1.2s ease-out forwards',
+            animation: 'fadeInRightMobile 1.2s ease-out forwards',
             animationPlayState: 'paused',
           }}
         >
@@ -77,7 +77,7 @@ const Contact = () => {
           ref={refs[2]}
           className="flex flex-col items-center p-6 bg-white shadow-lg rounded-lg transform opacity-0 transition-opacity duration-700"
           style={{
-            animation: 'fadeInLeft 1.2s ease-out forwards',
+            animation: 'fadeInLeftMobile 1.2s ease-out forwards',
             animationPlayState: 'paused',
           }}
         >
@@ -91,12 +91,23 @@ const Contact = () => {
 
       {/* Inline CSS for animations */}
       <style>{`
+        /* Desktop Animations */
         @keyframes fadeInLeft {
           0% { opacity: 0; transform: translateX(-60px); }
           100% { opacity: 1; transform: translateX(0); }
         }
         @keyframes fadeInRight {
           0% { opacity: 0; transform: translateX(60px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Mobile-specific Animations */
+        @keyframes fadeInLeftMobile {
+          0% { opacity: 0; transform: translateX(-30px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRightMobile {
+          0% { opacity: 0; transform: translateX(30px); }
           100% { opacity: 1; transform: translateX(0); }
         }
 
@@ -115,6 +126,9 @@ const Contact = () => {
 
         /* Media queries for responsive adjustments */
         @media (max-width: 768px) {
+          .grid {
+            grid-template-columns: 1fr; /* Stack items */
+          }
           .transform {
             animation-duration: 0.8s; /* Faster animations on smaller screens */
           }
