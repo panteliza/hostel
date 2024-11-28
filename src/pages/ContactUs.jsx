@@ -51,7 +51,7 @@ const Contact = () => {
         <div className="p-8 text-center">
           <h1
             ref={headingRef}
-            className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-700 to-pink-700 text-4xl font-semibold opacity-0"
+            className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-700 to-pink-700  text-2xl sm:text-4xl font-semibold opacity-0"
             style={{ animation: 'fadeInDown 1s ease-out forwards', animationPlayState: 'paused' }}
           >
              Welcome to Muktinath Girls Hostel
@@ -59,7 +59,7 @@ const Contact = () => {
 
           <p
             ref={textRef}
-            className="mt-4 text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-600 to-red-700 opacity-0"
+            className="mt-4  text-[15px] sm:text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-600 to-red-700 opacity-0"
             style={{ animation: 'fadeInUp 1s ease-out forwards', animationPlayState: 'paused' }}
           >
             Your home away from home, where comfort meets ambition. Empowering young women to dream,
