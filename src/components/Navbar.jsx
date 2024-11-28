@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { MdOutlineClose } from "react-icons/md";
 import logo from "../assets/logo.png"; // Replace with your actual logo path
@@ -8,14 +8,15 @@ import img2 from "../assets/googlemap.png"; // Replace with your actual path
 import img3 from "../assets/whatsapp.png"; // Replace with your actual path
 
 const navLinks = [
+  { path: "/", label: "Home" },
   { path: "/about", label: "About" },
- 
   { path: "/gallery", label: "Gallery" },
   { path: "/contact", label: "Contact us" },
 ];
 
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const location = useLocation(); // Hook to get the current location
 
   const toggleSidebar = () => setShowSidebar(!showSidebar);
 
@@ -37,14 +38,13 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8 text-lg">
-          <Link to="/" className="text-[#2D4591] font-medium hover:text-[#07A2BB]">
-            Home
-          </Link>
           {navLinks.map(({ path, label }) => (
             <Link
               key={path}
               to={path}
-              className="text-gray-700 hover:text-[#07A2BB] transition-all"
+              className={`${
+                location.pathname === path ? "text-[#2D4591]" : "text-gray-700"
+              } font-medium hover:text-[#07A2BB] transition-all`}
             >
               {label}
             </Link>
@@ -62,23 +62,18 @@ const Navbar = () => {
         {/* Mobile Sidebar */}
         {showSidebar && (
           <div className="fixed top-0 left-0 w-[300px] h-full bg-white shadow-lg z-[2] flex flex-col">
-            {/* Only Logo in Mobile Sidebar */}
+            {/* Logo in Mobile Sidebar */}
             <div className="flex justify-between items-center px-6 py-4">
               <img src={logo} alt="Muktinath Girls Hostel Logo" className="h-[80px] w-[90px]" />
               <MdOutlineClose className="text-2xl cursor-pointer" onClick={toggleSidebar} />
             </div>
-            <Link
-              to="/"
-              className="text-[#099BA4] font-medium py-3 px-6 border-b border-gray-200 hover:bg-gray-100"
-              onClick={toggleSidebar}
-            >
-              Home
-            </Link>
             {navLinks.map(({ path, label }) => (
               <Link
                 key={path}
                 to={path}
-                className="py-3 px-6 border-b border-gray-200 hover:bg-[#07A2BB]"
+                className={`${
+                  location.pathname === path ? "text-[#099BA4]" : "text-gray-700"
+                } font-medium py-3 px-6 border-b border-gray-200 hover:bg-gray-100`}
                 onClick={toggleSidebar}
               >
                 {label}

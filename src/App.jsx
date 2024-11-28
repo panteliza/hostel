@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import whatsappImage from './assets/whatsapp.png'; // Import WhatsApp image
 import About from './pages/About';
 import Gallery from './pages/Gallery';
+import Contact from './pages/ContactUs';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/muktinath" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
 
         {/* WhatsApp button as an image */}
