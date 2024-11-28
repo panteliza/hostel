@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import HostelImage from "../assets/4.jpeg"; // Ensure this path is correct
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Reviews from "../components/Reviews";
 
 const About = () => {
+  const location = useLocation();
+
+  // Scroll to top on location change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <div className="w-full flex-shrink-0 overflow-hidden">
       <Navbar />
-      <div className=" min-h-screen flex flex-col items-center py-10 animate-fadeIn">
+      <div className="min-h-screen flex flex-col items-center py-10 animate-fadeIn">
         <h1 className="text-4xl font-bold text-blue-900 mb-6 animate-slideDown">
           About Us
         </h1>
@@ -51,7 +59,6 @@ const About = () => {
               Join us at Muktinath Girls Hostel, where inspiration meets comfort,
               and together, we pave the way to a brighter future.
             </p>
-            
           </div>
         </div>
       </div>
@@ -92,40 +99,6 @@ const About = () => {
           }
         }
 
-        /* Bounce-in effect for buttons */
-        @keyframes bounceIn {
-          0% {
-            transform: scale(0.8);
-            opacity: 0;
-          }
-          50% {
-            transform: scale(1.2);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-
-        /* Gradient shimmer effect */
-        @keyframes gradientCycle {
-          0% {
-            background-position: 0% 50%;
-          }
-          25% {
-            background-position: 50% 0%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          75% {
-            background-position: 50% 100%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
         /* Gradient reveal animation */
         @keyframes gradientReveal {
           0% {
@@ -138,7 +111,6 @@ const About = () => {
           }
         }
 
-        /* Classes */
         .animate-fadeIn {
           animation: fadeIn 1.2s ease-in-out forwards;
         }
@@ -151,16 +123,8 @@ const About = () => {
           animation: zoomIn 1.5s ease-out forwards;
         }
 
-        .animate-bounceIn {
-          animation: bounceIn 1s ease-out forwards;
-        }
-
         .animate-gradientReveal {
           animation: gradientReveal 1.2s ease-in-out forwards;
-          display: inline-block;
-          transform-origin: bottom;
-          background-size: 400% 400%;
-          animation: gradientCycle 6s ease infinite;
         }
 
         .animate-gradientReveal.delay-500 {
@@ -169,11 +133,6 @@ const About = () => {
 
         .animate-gradientReveal.delay-700 {
           animation-delay: 0.7s;
-        }
-
-        /* Darker gradients */
-        .bg-gradient-to-r {
-          background-size: 400% 400%;
         }
       `}</style>
     </div>

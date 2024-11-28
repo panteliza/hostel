@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Image1 from "../assets/1.jpeg";
@@ -14,6 +15,13 @@ import Reviews from "../components/Reviews";
 const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
 
 const Gallery = () => {
+  const location = useLocation();
+
+  // Scroll to top on location change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <div className="w-full flex-shrink-0">
       <Navbar />
@@ -33,12 +41,11 @@ const Gallery = () => {
                 className="w-full h-60 object-cover transition-transform duration-500 transform group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-500"></div>
-             
             </div>
           ))}
         </div>
       </div>
-      <Reviews/>
+      <Reviews />
       <Footer />
       <style>{`
         /* Fade-in effect for the title */
