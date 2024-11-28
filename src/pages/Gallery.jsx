@@ -23,23 +23,33 @@ const Gallery = () => {
   }, [location]);
 
   return (
-    <div className="w-full flex-shrink-0">
+    <div className="w-full flex-shrink-0 animate-pageLoad">
       <Navbar />
       <div className="min-h-screen py-10">
+        {/* Page Title */}
         <h1 className="text-4xl font-bold text-blue-900 text-center mb-8 animate-fadeIn">
           Hostel Gallery
         </h1>
+
+        {/* Gallery Grid */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
           {images.map((image, index) => (
             <div
               key={index}
-              className="relative group overflow-hidden rounded-lg shadow-lg animate-zoomIn delay-200"
+              className="relative group overflow-hidden rounded-lg shadow-lg opacity-0"
+              style={{
+                animation: `fadeInUp 1s ease-out forwards`,
+                animationDelay: `${index * 0.2}s`,
+              }}
             >
+              {/* Image */}
               <img
                 src={image}
                 alt={`Gallery ${index + 1}`}
                 className="w-full h-60 object-cover transition-transform duration-500 transform group-hover:scale-110"
               />
+
+              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-500"></div>
             </div>
           ))}
@@ -47,9 +57,11 @@ const Gallery = () => {
       </div>
       <Reviews />
       <Footer />
+
+      {/* Animations */}
       <style>{`
-        /* Fade-in effect for the title */
-        @keyframes fadeIn {
+        /* Page Load Animation */
+        @keyframes pageLoad {
           from {
             opacity: 0;
           }
@@ -58,28 +70,36 @@ const Gallery = () => {
           }
         }
 
-        /* Zoom-in effect for images */
-        @keyframes zoomIn {
+        .animate-pageLoad {
+          animation: pageLoad 1.2s ease-in-out forwards;
+        }
+
+        /* Title Fade-in Animation */
+        @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: scale(0.8);
+            transform: translateY(-20px);
           }
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
           }
         }
 
         .animate-fadeIn {
-          animation: fadeIn 1.2s ease-in-out forwards;
+          animation: fadeIn 1s ease-in-out forwards;
         }
 
-        .animate-zoomIn {
-          animation: zoomIn 1s ease-out forwards;
-        }
-
-        .animate-zoomIn.delay-200 {
-          animation-delay: 0.2s;
+        /* Image Fade-in-Up Animation */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>
