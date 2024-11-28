@@ -13,6 +13,7 @@ import { MdLocalLaundryService, MdFoodBank } from "react-icons/md";
 
 const Facilities = () => {
   const facilityRefs = useRef([]);
+  const headingRef = useRef(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -31,11 +32,13 @@ const Facilities = () => {
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
+    if (headingRef.current) observer.observe(headingRef.current);
     facilityRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
+      if (headingRef.current) observer.unobserve(headingRef.current);
       facilityRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
@@ -57,10 +60,22 @@ const Facilities = () => {
 
   return (
     <section className="py-12 bg-gray-50">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-blue-900">Our Facilities</h2>
+      {/* Heading Section */}
+      <div
+        ref={headingRef}
+        className="text-center mb-8 opacity-0"
+        style={{
+          animation: "zoomIn 1s ease-out forwards",
+          animationPlayState: "paused",
+        }}
+      >
+        <h2 className="text-3xl font-bold text-blue-900 leading-tight animate-headingGlow">
+          Our Facilities
+        </h2>
         <p className="text-gray-600">Premium amenities for a comfortable stay</p>
       </div>
+
+      {/* Facilities Grid */}
       <div className="grid gap-6 px-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
         {facilities.map((facility, index) => (
           <div
@@ -73,7 +88,16 @@ const Facilities = () => {
               opacity: 0,
             }}
           >
-            <div className="mb-4">{facility.icon}</div>
+            {/* Animated Icon */}
+            <div
+              className="mb-4"
+              style={{
+                animation: "bounceIn 1.2s ease-out",
+                animationDelay: `${0.3 * index}s`,
+              }}
+            >
+              {facility.icon}
+            </div>
             <h3 className="font-semibold text-lg text-yellow-700">{facility.title}</h3>
             <p className="text-sm text-gray-600 mt-2">{facility.description}</p>
           </div>
@@ -82,6 +106,26 @@ const Facilities = () => {
 
       {/* Inline CSS for animations */}
       <style>{`
+        /* Heading Animation */
+        @keyframes zoomIn {
+          0% { opacity: 0; transform: scale(0.5); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes headingGlow {
+          0% { text-shadow: 0 0 5px #4a90e2; }
+          50% { text-shadow: 0 0 15px #4a90e2; }
+          100% { text-shadow: 0 0 5px #4a90e2; }
+        }
+
+        /* Icon Bounce Animation */
+        @keyframes bounceIn {
+          0% { opacity: 0; transform: scale(0.3) translateY(-50px); }
+          50% { opacity: 0.7; transform: scale(1.1) translateY(10px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Existing Animations */
         @keyframes fadeInLeft {
           0% { opacity: 0; transform: translateX(-80px); }
           100% { opacity: 1; transform: translateX(0); }
