@@ -24,24 +24,23 @@ const Facilities = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.style.animationPlayState = "running";
-        } else {
-          entry.target.style.animationPlayState = "paused";
         }
       });
     };
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-    if (headingRef.current) observer.observe(headingRef.current);
     facilityRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
+    if (headingRef.current) observer.observe(headingRef.current);
+
     return () => {
-      if (headingRef.current) observer.unobserve(headingRef.current);
       facilityRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
+      if (headingRef.current) observer.unobserve(headingRef.current);
     };
   }, []);
 
@@ -133,6 +132,14 @@ const Facilities = () => {
         @keyframes fadeInRight {
           0% { opacity: 0; transform: translateX(80px); }
           100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Media Query for Small Screens */
+        @media (max-width: 768px) {
+          .opacity-0 {
+            animation-play-state: running !important;
+            opacity: 1;
+          }
         }
       `}</style>
     </section>
