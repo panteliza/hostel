@@ -103,7 +103,7 @@ const Footer = () => {
       </div>
       <div className="text-center py-3 font-semibold text-white  w-full">
   <span className="glitter-effect">
-    &copy; 2024 <span className="glitter-effect-text">Muktinath Girls Hostel</span> Hearing And Speech Care Center, Developed & Design by  
+    &copy; 2024 <span className="glitter-effect-text">Muktinath Girls Hostel</span> Developed & Design by  
     {' '}
     <a 
       href="https://www.cloudsnepalweb.com/" 
