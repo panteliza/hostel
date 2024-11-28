@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import image1 from "../assets/8 (1).jpeg"; // Replace with your actual paths
-import image2 from "../assets/1.jpeg"; // Replace with your actual paths
-import image3 from "../assets/2.jpeg"; // Add your images here
+import image1 from "../assets/8 (1).jpeg";
+import image2 from "../assets/1.jpeg";
+import image3 from "../assets/2.jpeg";
 import image4 from "../assets/3.jpeg";
 import image5 from "../assets/4.jpeg";
 import image6 from "../assets/5.jpeg";
@@ -24,7 +24,7 @@ const Gallery = () => {
 
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.2, // Trigger animation when 20% of the element is visible
+      threshold: 0.1, // Trigger animation when 10% of the element is visible
     };
 
     const handleIntersection = (entries) => {
@@ -55,22 +55,22 @@ const Gallery = () => {
       </h2>
       <div
         ref={galleryRef}
-        className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-6xl mx-auto px-4"
+        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-4"
       >
         {images.map((image, index) => (
           <div
             key={index}
             className="relative overflow-hidden rounded-lg shadow-md opacity-0"
             style={{
-              animation: `fadeInUp 0.8s ease-out forwards`,
-              animationDelay: `${index * 0.2}s`, // Delay animation for each image
+              animation: `fadeIn 0.8s ease-out forwards`,
+              animationDelay: `${index * 0.2}s`,
               animationPlayState: "paused",
             }}
           >
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-[150px] sm:h-[200px] md:h-[250px] object-contain"
+              className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover rounded-md"
             />
           </div>
         ))}
@@ -78,7 +78,7 @@ const Gallery = () => {
 
       {/* Inline CSS for animations */}
       <style>{`
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
           0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
         }
