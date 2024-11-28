@@ -1,102 +1,122 @@
-import React from "react";
-import facebookImg from "../assets/facebook.png"; // Replace with actual image paths
-import whatsappImg from "../assets/whatsapp.png";
-import linkedinImg from "../assets/googlemap.png";
-import muktinathLogo from "../assets/logo.png"; // Replace with the actual logo path
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import React, { useEffect, useRef } from 'react';
+import aawazLogo from '../assets/logo.png';
+import facebookImg from '../assets/facebook.png';
+import googleImg from '../assets/googlemap.png';
+import whatsappImg from '../assets/whatsapp.png';
+import footerbgimage from '../assets/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner.jpg';
+import { Link } from 'react-router-dom';
+import { HiOutlineMail } from 'react-icons/hi';
+import { MdLocationOn } from 'react-icons/md';
+import { BsTelephoneFill } from 'react-icons/bs';
 
 const Footer = () => {
+  const navItems1 = [
+    { label: "Home", link: "/" },
+    { label: "About", link: "/about" },
+    { label: "Contact", link: "/contact" },
+  ];
+
+  const contactItems = [
+    { icon: <BsTelephoneFill />, link: "tel:+9779851102512", label: "977 9851102512" },
+    { icon: <HiOutlineMail />, link: "muktinathgirlshostel@gmail.com", label: "muktinathgirlshostel@gmail.com" },
+    { icon: <MdLocationOn />, label: "  Anamnagar, Kathmandu, Nepal" },
+  ];
+
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = { threshold: 0.5 };
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      });
+    };
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    if (footerRef.current) observer.observe(footerRef.current);
+
+    return () => {
+      if (footerRef.current) observer.unobserve(footerRef.current);
+    };
+  }, []);
+
   return (
-    <footer className="bg-[#6c7ee7] text-white py-12 w-full flex flex-col items-center justify-center">
-      <div className="max-w-7xl w-full px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
-        {/* Column 1 */}
-        <div className="flex flex-col items-center md:items-start space-y-2 md:space-y-3">
-          {/* Muktinath Logo */}
-          <img
-            src={muktinathLogo}
-            alt="Muktinath Logo"
-            className="w-[150px] h-auto mb-4"
-          />
-          <h2 className="text-2xl font-bold">Muktinath Girls Hostel</h2>
-          <p className="text-sm">Premium girls' hostel in Kathmandu</p>
+    <div
+      className="w-full relative"
+      style={{
+        backgroundImage: `url(${footerbgimage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative',
+      }}
+    >
+      {/* Darker red overlay */}
+      <div className="absolute inset-0 bg-[#6c7ee7]  opacity-50 z-0"></div>
+
+      <div
+        ref={footerRef}
+        className="flex flex-col gap-4 py-6 px-4 sm:px-7 md:flex-row justify-center items-center md:gap-8 lg:gap-12 xl:gap-16 relative z-10"
+        style={{
+          animation: 'fadeIn 1s ease forwards',
+          animationPlayState: 'paused',
+        }}
+      >
+        <div className="flex flex-col items-center gap-2 sm:gap-4">
+          <Link to="/">
+            <img
+              src={aawazLogo}
+              alt="Aawaz Logo"
+              className=" h-[150px] w-[180px] sm:h-[220px] sm:w-[250px] rounded-full transition-transform duration-700 ease-in-out hover:scale-110 object-contain"
+            />
+          </Link>
+          <div className="flex gap-2 sm:gap-3">
+            <a
+              href="https://www.facebook.com/aawazhearing/"
+              className="transition-transform duration-500 transform hover:scale-110"
+            >
+              <img src={facebookImg} alt="Facebook" className="w-8 h-8" />
+            </a>
+            <a
+              href="https://www.google.com/maps/dir//Hospital+Rd+10,+Bharatpur+44200"
+              className="transition-transform duration-500 transform hover:scale-110"
+            >
+              <img src={googleImg} alt="Google" className="w-8 h-8" />
+            </a>
+            <a
+              href="https://wa.me/9779845192771"
+              className="transition-transform duration-500 transform hover:scale-110"
+            >
+              <img src={whatsappImg} alt="WhatsApp" className="w-8 h-8" />
+            </a>
+          </div>
         </div>
 
-        {/* Column 2 */}
-        <div className="flex flex-col items-center md:items-start space-y-2 md:space-y-4">
-          <div className="flex items-start gap-3">
-            <FaMapMarkerAlt size={18} className="mt-1" />
-            <p>
-              Anamnagar, Kathmandu, Nepal
-              <br />
-              <span className="text-sm">Way to Liberty College</span>
-            </p>
-          </div>
-          <div className="flex items-start gap-3">
-            <FaPhoneAlt size={18} className="mt-1" />
-            <p>+977 9851102512</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <FaEnvelope size={18} className="mt-1" />
-            <p>muktinathgirlshostel@gmail.com</p>
-          </div>
-        </div>
+        <NavSection title="Quick Links" items={navItems1} />
 
-        {/* Column 3 - Social Media Icons */}
-        <div className="flex flex-col items-center md:items-start space-y-4">
-          <h3 className="text-lg font-semibold">Follow Us</h3>
-          <div className="flex gap-4">
-            {/* Facebook */}
-            <a
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-transform duration-500 transform hover:scale-110"
-            >
-              <img
-                src={facebookImg}
-                alt="Facebook"
-                className="w-10 h-10 rounded-full"
-              />
-            </a>
-
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/9810041641"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-transform duration-500 transform hover:scale-110"
-            >
-              <img
-                src={whatsappImg}
-                alt="WhatsApp"
-                className="w-10 h-10 rounded-full"
-              />
-            </a>
-
-            {/* Google Maps */}
-            <a
-              href="https://www.google.com/maps"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-transform duration-500 transform hover:scale-110"
-            >
-              <img
-                src={linkedinImg}
-                alt="Google Maps"
-                className="w-10 h-10 rounded-full"
-              />
-            </a>
+        <div className="flex flex-col items-center font-semibold text-[16px] sm:text-[18px] gap-2 sm:gap-3">
+          <div className="font-bold text-[18px] sm:text-[20px] text-white text-center">
+          Muktinath Girls Hostel
           </div>
+          {contactItems.map((item, index) => (
+            <ContactItem key={index} icon={item.icon} link={item.link} label={item.label} />
+          ))}
         </div>
       </div>
+      <div className="text-center py-3 font-semibold text-white  w-full">
+  <span className="glitter-effect">
+    &copy; 2024 <span className="glitter-effect-text">Muktinath Girls Hostel</span> Hearing And Speech Care Center, Developed & Design by  
+    {' '}
+    <a 
+      href="https://www.cloudsnepalweb.com/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="glitter-effect-text"
+    >
+      Clouds Nepal Web Pvt. Ltd.
+    </a>
+  </span>
+</div>
 
-      {/* Footer Bottom */}
-      <div className="text-center mt-12 text-sm text-gray-200">
-        <span>
-          &copy; 2024 <span className="font-semibold">Muktinath Girls Hostel</span>. Developed & Designed by{" "}
-          <span className="font-semibold">Clouds Nepal Web Pvt. Ltd.</span>
-        </span>
-        
+
       {/* Inline CSS for custom animations */}
       <style>{`
         @keyframes fadeIn {
@@ -134,9 +154,31 @@ const Footer = () => {
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 255, 255, 0.3);
   }
       `}</style>
-      </div>
-    </footer>
+    </div>
   );
 };
+
+const NavSection = ({ title, items }) => (
+  <div className="flex flex-col items-center font-semibold text-[16px] sm:text-[18px] gap-2 sm:gap-5">
+    {items.map((item, index) => (
+      <NavItem key={index} link={item.link} label={item.label} />
+    ))}
+  </div>
+);
+
+const NavItem = ({ link, label }) => (
+  <div className="flex gap-2 items-center">
+    <Link to={link} className="text-white hover:text-gray-300 transition-colors duration-300">
+      {label}
+    </Link>
+  </div>
+);
+
+const ContactItem = ({ icon, link, label }) => (
+  <div className="flex gap-2 items-center text-white hover:text-gray-300 transition-colors duration-300">
+    {icon}
+    {link ? <a href={link}>{label}</a> : <span>{label}</span>}
+  </div>
+);
 
 export default Footer;
