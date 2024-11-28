@@ -2,9 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 const Contact = () => {
-  const locationRef = useRef(null);
-  const contactRef = useRef(null);
-  const mailRef = useRef(null);
+  const refs = [useRef(null), useRef(null), useRef(null)];
 
   useEffect(() => {
     const observerOptions = {
@@ -24,16 +22,16 @@ const Contact = () => {
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-    if (locationRef.current) observer.observe(locationRef.current);
-    if (contactRef.current) observer.observe(contactRef.current);
-    if (mailRef.current) observer.observe(mailRef.current);
+    refs.forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
 
     return () => {
-      if (locationRef.current) observer.unobserve(locationRef.current);
-      if (contactRef.current) observer.unobserve(contactRef.current);
-      if (mailRef.current) observer.unobserve(mailRef.current);
+      refs.forEach((ref) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
     };
-  }, []);
+  }, [refs]);
 
   return (
     <div className="flex flex-col items-center justify-center py-10 bg-gray-100">
@@ -44,7 +42,7 @@ const Contact = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Location Box */}
         <div
-          ref={locationRef}
+          ref={refs[0]}
           className="flex flex-col items-center p-6 bg-white shadow-lg rounded-lg transform opacity-0 transition-opacity duration-700"
           style={{
             animation: 'fadeInLeft 1.2s ease-out forwards',
@@ -60,10 +58,10 @@ const Contact = () => {
 
         {/* Contact Box */}
         <div
-          ref={contactRef}
+          ref={refs[1]}
           className="flex flex-col items-center p-6 bg-white shadow-lg rounded-lg transform opacity-0 transition-opacity duration-700"
           style={{
-            animation: 'fadeInBottom 1.2s ease-out forwards',
+            animation: 'fadeInRight 1.2s ease-out forwards',
             animationPlayState: 'paused',
           }}
         >
@@ -76,10 +74,10 @@ const Contact = () => {
 
         {/* Mail Box */}
         <div
-          ref={mailRef}
+          ref={refs[2]}
           className="flex flex-col items-center p-6 bg-white shadow-lg rounded-lg transform opacity-0 transition-opacity duration-700"
           style={{
-            animation: 'fadeInRight 1.2s ease-out forwards',
+            animation: 'fadeInLeft 1.2s ease-out forwards',
             animationPlayState: 'paused',
           }}
         >
@@ -100,10 +98,6 @@ const Contact = () => {
         @keyframes fadeInRight {
           0% { opacity: 0; transform: translateX(60px); }
           100% { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInBottom {
-          0% { opacity: 0; transform: translateY(60px); }
-          100% { opacity: 1; transform: translateY(0); }
         }
 
         /* Stronger Shiver effect for icons */
