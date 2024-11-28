@@ -27,7 +27,7 @@ const About = () => {
             <h2 className="text-3xl font-semibold text-gray-800 animate-fadeIn">
               Welcome to Muktinath Girls Hostel
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed animate-slideIn">
+            <p className="text-lg leading-relaxed text-justify bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent animate-readEffect">
               Nestled in the vibrant heart of Anamnagar, Kathmandu, Muktinath
               Girls Hostel offers more than just a residence—it’s a sanctuary
               for growth, empowerment, and achievement. Designed for independent
@@ -35,7 +35,7 @@ const About = () => {
               provides an environment where futures are built, and dreams come
               alive.
             </p>
-            <p className="text-gray-600 text-lg leading-relaxed animate-slideIn delay-200">
+            <p className="text-lg leading-relaxed text-justify bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent animate-readEffect delay-200">
               Our state-of-the-art facilities, coupled with a dedicated and
               supportive management team, ensure the perfect blend of comfort
               and productivity. Whether it’s academics, personal growth, or
@@ -43,15 +43,15 @@ const About = () => {
               young women can thrive as leaders, innovators, and pioneers in
               their fields.
             </p>
-            <p className="text-gray-600 text-lg leading-relaxed animate-slideIn delay-400">
+            <p className="text-lg leading-relaxed text-justify bg-gradient-to-r from-blue-600 via-purple-500 to-blue-500 bg-clip-text text-transparent animate-readEffect delay-400">
               Join us at Muktinath Girls Hostel, where inspiration meets comfort,
               and together, we pave the way to a brighter future.
             </p>
           </div>
         </div>
       </div>
-      <Reviews/>
-      <Footer/>
+      <Reviews />
+      <Footer />
     </div>
   );
 };

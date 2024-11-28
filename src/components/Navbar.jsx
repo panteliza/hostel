@@ -9,7 +9,7 @@ import img3 from "../assets/whatsapp.png"; // Replace with your actual path
 
 const navLinks = [
   { path: "/about", label: "About" },
-  { path: "/blog", label: "Blog" },
+ 
   { path: "/gallery", label: "Gallery" },
   { path: "/contact", label: "Contact us" },
 ];
