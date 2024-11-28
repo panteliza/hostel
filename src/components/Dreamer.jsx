@@ -101,7 +101,7 @@ const ImageWithDescription = () => {
   }
 
   .animate-gradientReveal {
-    animation: gradientReveal 4s ease-in-out forwards, colorShift 6s infinite alternate ease-in-out;
+    animation: gradientReveal 1s ease-in-out forwards, colorShift 6s infinite alternate ease-in-out;
     background-size: 400% 400%; /* Smooth color transition */
   }
 
