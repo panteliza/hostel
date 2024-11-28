@@ -133,6 +133,33 @@ const Contact = () => {
             animation-duration: 0.8s; /* Faster animations on smaller screens */
           }
         }
+           @keyframes fadeInDown {
+          0% { opacity: 0; transform: translateY(-20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+
+        /* Media queries for better performance on smaller screens */
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 1.5rem; /* Adjust heading size */
+            animation-duration: 0.8s; /* Faster animations */
+          }
+          p {
+            font-size: 1rem; /* Adjust text size */
+            animation-duration: 0.8s; /* Faster animations */
+          }
+          img {
+            animation-duration: 0.8s; /* Faster animations */
+          }
+        }
       `}</style>
     </div>
   );
