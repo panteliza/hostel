@@ -1,5 +1,6 @@
 {
-  "name": "ivf",
+  "name": "hostel",
+  "homepage": "http://panteliza.github.io/hostel",
   "private": true,
   "version": "0.0.0",
   "type": "module",
