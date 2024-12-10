@@ -8,7 +8,6 @@ import {
   FaPlug,
   FaChair,
 } from "react-icons/fa";
-import { BiFridge } from "react-icons/bi";
 import { MdLocalLaundryService, MdFoodBank } from "react-icons/md";
 
 const Facilities = () => {
@@ -46,15 +45,14 @@ const Facilities = () => {
 
   const facilities = [
     { icon: <FaBed size={32} className="text-yellow-600" />, title: "Spacious Rooms", description: "Spacious and naturally well-lit rooms." },
-    { icon: <FaBath size={32} className="text-yellow-600" />, title: "Attached Bathrooms", description: "Rooms have attached bathrooms." },
     { icon: <FaSnowflake size={32} className="text-yellow-600" />, title: "Air-conditioner", description: "Rooms equipped with air-conditioners." },
-    { icon: <BiFridge size={32} className="text-yellow-600" />, title: "Refrigerator", description: "Each room has a refrigerator." },
     { icon: <FaWifi size={32} className="text-yellow-600" />, title: "Internet", description: "Free high-speed WiFi available." },
     { icon: <FaCouch size={32} className="text-yellow-600" />, title: "Lobby Area", description: "Spacious communal lobby areas." },
     { icon: <MdFoodBank size={32} className="text-yellow-600" />, title: "Food", description: "Nutritious meals provided daily." },
     { icon: <MdLocalLaundryService size={32} className="text-yellow-600" />, title: "Laundry Service", description: "Laundry facilities available." },
     { icon: <FaChair size={32} className="text-yellow-600" />, title: "Study Table", description: "Each room has a study table." },
     { icon: <FaPlug size={32} className="text-yellow-600" />, title: "Power Backup", description: "24/7 power backup available." },
+    { icon: <FaBath size={32} className="text-yellow-600" />, title: "Geyser Services", description: "Hot water available through geysers." },
   ];
 
   return (
