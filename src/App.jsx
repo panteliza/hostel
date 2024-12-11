@@ -14,7 +14,7 @@ import Contact from './pages/ContactUs';
 
 const App = () => {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <div>
         {/* Routes for different pages */}
         <Routes>
